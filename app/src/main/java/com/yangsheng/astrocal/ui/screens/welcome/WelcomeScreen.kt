@@ -72,20 +72,27 @@ fun WelcomeScreen(
                 textAlign = TextAlign.Center
             )
 
-            Spacer(Modifier.height(18.dp))
+            Spacer(Modifier.height(30.dp))
 
-            // 你把邮箱改成真实的
             Text(
-                text = "Credit by syang\nSupport：saberyoung@gmail.com",
+                text = ui.authortitle,
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center
             )
 
-            Spacer(Modifier.height(18.dp))
+            Spacer(Modifier.height(10.dp))
             Text(
-                text = "Tap anywhere to continue",
+                text = "Support：saberyoung@gmail.com\n© 2026 All rights reserved.",
                 style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(Modifier.height(48.dp))
+            Text(
+                text = "Tap anywhere to continue :-)",
+                style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }

@@ -14,6 +14,7 @@ import com.yangsheng.astrocal.ui.i18n.UiStrings
 import com.yangsheng.astrocal.ui.screens.components.AppTopBar
 import com.yangsheng.astrocal.ui.screens.components.LangPickerDialog
 import com.yangsheng.astrocal.util.SphericalUtils
+import com.yangsheng.astrocal.ui.theme.AstroBackground
 
 @Composable
 fun AngleScreen(
@@ -22,6 +23,7 @@ fun AngleScreen(
     onLangSelected: (Lang) -> Unit,
     onBack: () -> Unit,
     onClose: () -> Unit,
+    onAi: (() -> Unit)? = null,
 ) {
     var showLang by remember { mutableStateOf(false) }
 
@@ -30,7 +32,10 @@ fun AngleScreen(
         title = ui.chooseLang,
         current = lang,
         onDismiss = { showLang = false },
-        onSelect = onLangSelected
+        onSelect = {
+            showLang = false
+            onLangSelected(it)
+        }
     )
 
     var ra1 by remember { mutableStateOf("") }
@@ -47,10 +52,12 @@ fun AngleScreen(
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onAi,
                 onClose = onClose
             )
         }
     ) { inner ->
+        AstroBackground {
         Column(
             modifier = Modifier
                 .padding(inner)
@@ -97,7 +104,8 @@ fun AngleScreen(
                 }
             }
         }
-    }
+            }
+}
 }
 
 @Composable

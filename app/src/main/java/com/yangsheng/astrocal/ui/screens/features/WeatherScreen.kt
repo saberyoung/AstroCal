@@ -16,6 +16,7 @@ import com.yangsheng.astrocal.ui.screens.components.LangPickerDialog
 import com.yangsheng.astrocal.util.GeoPlace
 import com.yangsheng.astrocal.util.OpenMeteoService
 import com.yangsheng.astrocal.util.WeatherForecast
+import com.yangsheng.astrocal.ui.theme.AstroBackground
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -27,7 +28,8 @@ fun WeatherScreen(
     onLangSelected: (Lang) -> Unit,
     onClose: () -> Unit,
     onBack: () -> Unit,
-    onOpenCloudMap: () -> Unit
+    onOpenCloudMap: () -> Unit,
+    onAi: (() -> Unit)? = null,
 ) {
     val scope = rememberCoroutineScope()
 
@@ -120,10 +122,12 @@ fun WeatherScreen(
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onAi,
                 onClose = onClose
             )
         }
     ) { pad ->
+        AstroBackground {
         Column(
             modifier = Modifier
                 .padding(pad)
@@ -234,5 +238,6 @@ fun WeatherScreen(
                 }
             }
         }
-    }
+            }
+}
 }

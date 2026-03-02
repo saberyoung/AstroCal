@@ -33,20 +33,17 @@ private data class Particle(
 fun SplashScreen(
     onDone: () -> Unit
 ) {
-    // ✅ 主题色在 composable 里取，Canvas 里别读 MaterialTheme
     val primary = MaterialTheme.colorScheme.primary
     val secondary = MaterialTheme.colorScheme.secondary
 
-    // ✅ 整体慢一点：动画更慢 + 停留更久
     LaunchedEffect(Unit) {
-        delay(1950)
+        delay(3950)
         onDone()
     }
 
-    // ✅ logo 淡入更慢
     val alpha by animateFloatAsState(
         targetValue = 1f,
-        animationSpec = tween(durationMillis = 900, easing = FastOutSlowInEasing),
+        animationSpec = tween(durationMillis = 1900, easing = FastOutSlowInEasing),
         label = "alpha"
     )
 
@@ -55,12 +52,12 @@ fun SplashScreen(
     LaunchedEffect(Unit) {
         // 第一段：放大到 1.15（更大幅度）
         scaleAnim.animateTo(
-            targetValue = 1.15f,
+            targetValue = 4.0f,
             animationSpec = tween(durationMillis = 1100, easing = FastOutSlowInEasing)
         )
         // 第二段：回弹到 1.0（慢一点）
         scaleAnim.animateTo(
-            targetValue = 1.0f,
+            targetValue = 2.0f,
             animationSpec = spring(
                 dampingRatio = 0.55f,
                 stiffness = 120f
@@ -82,8 +79,8 @@ fun SplashScreen(
 
     // ✅ 粒子进度更慢
     val particleT by animateFloatAsState(
-        targetValue = 1f,
-        animationSpec = tween(durationMillis = 1500, easing = CubicBezierEasing(0.10f, 0.90f, 0.18f, 1f)),
+        targetValue = 6f,
+        animationSpec = tween(durationMillis = 2500, easing = CubicBezierEasing(0.10f, 0.90f, 0.18f, 1f)),
         label = "particleT"
     )
 
@@ -103,7 +100,7 @@ fun SplashScreen(
     }
 
     val density = LocalDensity.current
-    val logoSizeDp = 140.dp // ✅ logo 大一点
+    val logoSizeDp = 160.dp // ✅ logo 大一点
     val logoSizePx = with(density) { logoSizeDp.toPx() }
 
     Surface {

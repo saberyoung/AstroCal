@@ -16,6 +16,7 @@ import com.yangsheng.astrocal.ui.i18n.Lang
 import com.yangsheng.astrocal.ui.i18n.UiStrings
 import com.yangsheng.astrocal.ui.screens.components.AppTopBar
 import com.yangsheng.astrocal.ui.screens.components.LangPickerDialog
+import com.yangsheng.astrocal.ui.theme.AstroBackground
 
 // 你可以按需扩展更多 survey
 private enum class Survey(val label: String, val surveyId: String) {
@@ -34,7 +35,8 @@ fun CelestialScreen(
     lang: Lang,
     onLangSelected: (Lang) -> Unit,
     onBack: () -> Unit,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    onAi: (() -> Unit)? = null,
 ) {
     var showLang by remember { mutableStateOf(false) }
 
@@ -81,10 +83,12 @@ fun CelestialScreen(
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onAi,
                 onClose = onClose
             )
         }
     ) { pad ->
+        AstroBackground {
         Column(
             modifier = Modifier
                 .padding(pad)
@@ -210,7 +214,8 @@ fun CelestialScreen(
                 )
             }
         }
-    }
+            }
+}
 }
 
 private fun buildAladinHtml(

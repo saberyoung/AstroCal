@@ -11,6 +11,7 @@ data class UiStrings(
     val exitConfirmText: String,
     val yes: String,
     val cancel: String,
+    val authortitle: String,
 
     val homeTitle: String,
     val finderTitle: String,
@@ -76,4 +77,112 @@ data class UiStrings(
     val celestialGoto: String,
     val celestialGotoZero: String,
     val celestialHint: String,
+
+    val aiTitle: String,
+    val aiModeTitle: String,
+
+    val aiModeFreeTitle: String,
+    val aiModeFreeSubtitle: String,
+    val aiModeByoTitle: String,
+    val aiModeByoSubtitle: String,
+    val aiModeOffTitle: String,
+    val aiModeOffSubtitle: String,
+
+    val aiKeyTitle: String,
+    val aiKeyLabel: String,
+    val aiKeySave: String,
+    val aiKeyShow: String,
+    val aiKeyHide: String,
+    val aiKeyClear: String,
+    val aiKeyHint: String,
+
+    val aiStatusTitle: String,
+    val aiStatusFree: String,
+    val aiStatusByoOk: String,
+    val aiStatusByoMissing: String,
+    val aiStatusOff: String,
+
+    val aiPanelTitle: String,
+    val aiProviderLabel: String,
+
+    val aiModeOff: String,
+    val aiModeLocal: String,
+    val aiModeOpenAI: String,
+    val aiModeGemini: String,
+    val aiModeClaude: String,
+
+    val aiOffHint: String,
+    val aiLocalHint: String,
+
+    val aiApiKeyLabel: String,
+    val aiApiKeyPlaceholder: String,
+    val aiApiKeyHint: String,
+    val aiMaskApiKey: Boolean,
+
+    val aiChatTitle: String,
+    val aiAskSomething: String,
+    val aiSend: String,
+    val aiSending: String,
+    val aiClear: String,
+
+    val aiHello: String,
+    val aiSystemPrompt: String,
+
+    val aiYouPrefix: String,
+    val aiAssistantPrefix: String,
+
+    val aiDisabledHint: String,
+    val aiNeedApiKey: String,
+    val aiErrorPrefix: String,
+
+    // Finder screen
+    val finderSubtitle: String,
+    val finderRa: String,
+    val finderDec: String,
+    val finderFov: String,
+    val finderRadius: String,
+    val finderFilter: String,
+    val finderGenerate: String,
+    val finderLoading: String,
+    val finderCopyCenter: String,
+    val finderCopyCsv: String,
+    val finderNoSources: String,
+    val finderSourcesN: String,
+    val finderFormatError: String,
+    val finderOverlay: String,
+    val finderShape: String,
+    val finderColor: String,
+    val finderCopy: String,
+    val finderDebug: String,
+    val finderToggleYFlip: String,
+
+    val OACTitle: String,
+    val OACSubTitle: String,
+
+    // Supernova
+    val supernovaTitle: String,
+    val supernovaTabByName: String,
+    val supernovaTabCone: String,
+    val supernovaTabClaimedType: String,
+
+    val supernovaByNameTitle: String,
+    val supernovaNameLabel: String,
+
+    val supernovaConeTitle: String,
+    val supernovaRaLabel: String,
+    val supernovaDecLabel: String,
+    val supernovaRadiusArcsecLabel: String,
+    val supernovaNLabel: String,
+    val supernovaConeHint: String,
+
+    val supernovaClaimedTypeTitle: String,
+    val supernovaClaimedTypeLabel: String,
+    val supernovaClaimedTypeHint: String,
+
+    val supernovaResultsTitle: String,
+    val supernovaShowRaw: String,
+    val commonQuery: String,
+    val commonLoading: String,
+    val commonUnknown: String,
+    val commonClose: String,
 )

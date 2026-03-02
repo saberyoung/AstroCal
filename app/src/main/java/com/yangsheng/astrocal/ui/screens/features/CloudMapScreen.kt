@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.yangsheng.astrocal.ui.i18n.Lang
 import com.yangsheng.astrocal.ui.i18n.UiStrings
 import com.yangsheng.astrocal.ui.screens.components.AppTopBar
+import com.yangsheng.astrocal.ui.theme.AstroBackground
 
 @Composable
 fun CloudMapScreen(
@@ -20,7 +21,8 @@ fun CloudMapScreen(
     lang: Lang,
     onLangSelected: (Lang) -> Unit,
     onBack: () -> Unit,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    onAi: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
     var showLang by remember { mutableStateOf(false) }
@@ -54,10 +56,12 @@ fun CloudMapScreen(
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onAi,
                 onClose = onClose
             )
         }
     ) { pad ->
+        AstroBackground {
         Column(
             modifier = Modifier
                 .padding(pad)
@@ -80,5 +84,6 @@ fun CloudMapScreen(
                 Text(ui.cloudMapVentusky)
             }
         }
-    }
+            }
+}
 }

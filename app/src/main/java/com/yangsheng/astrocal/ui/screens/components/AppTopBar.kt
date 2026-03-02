@@ -6,6 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.yangsheng.astrocal.ui.i18n.UiStrings
@@ -16,6 +17,7 @@ fun AppTopBar(
     ui: UiStrings,
     onBack: (() -> Unit)? = null,
     onLang: (() -> Unit)? = null,
+    onAi: (() -> Unit)? = null,
     onClose: (() -> Unit)? = null
 ) {
     var showExitConfirm by remember { mutableStateOf(false) }
@@ -50,6 +52,11 @@ fun AppTopBar(
             if (onLang != null) {
                 IconButton(onClick = onLang) {
                     Icon(Icons.Outlined.Language, contentDescription = "Language")
+                }
+            }
+            if (onAi != null) {
+                IconButton(onClick = onAi) {
+                    Icon(Icons.Outlined.AutoAwesome, contentDescription = "AI")
                 }
             }
             if (onClose != null) {

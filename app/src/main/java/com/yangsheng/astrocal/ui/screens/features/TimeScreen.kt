@@ -21,6 +21,7 @@ import com.yangsheng.astrocal.ui.screens.components.LangPickerDialog
 import com.yangsheng.astrocal.ui.screens.components.OutputRow
 import com.yangsheng.astrocal.util.TimeInputType
 import com.yangsheng.astrocal.util.TimeUtils
+import com.yangsheng.astrocal.ui.theme.AstroBackground
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,6 +31,7 @@ fun TimeScreen(
     onLangSelected: (Lang) -> Unit,
     onBack: () -> Unit,
     onClose: () -> Unit,
+    onAi: (() -> Unit)? = null,
 ) {
     var showLang by remember { mutableStateOf(false) }
     LangPickerDialog(
@@ -37,7 +39,10 @@ fun TimeScreen(
         title = ui.chooseLang,
         current = lang,
         onDismiss = { showLang = false },
-        onSelect = onLangSelected
+        onSelect = {
+            showLang = false
+            onLangSelected(it)
+        }
     )
 
     val clipboard = LocalClipboardManager.current
@@ -104,10 +109,12 @@ fun TimeScreen(
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onAi,
                 onClose = onClose
             )
         }
     ) { inner ->
+        AstroBackground {
         Column(
             modifier = Modifier
                 .padding(inner)
@@ -194,5 +201,6 @@ fun TimeScreen(
                 OutputRow("GPS (s)", outGps) { v -> clipboard.setText(AnnotatedString(v)) }
             }
         }
-    }
+            }
+}
 }

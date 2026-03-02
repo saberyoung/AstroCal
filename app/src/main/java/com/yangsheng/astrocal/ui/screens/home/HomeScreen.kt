@@ -1,16 +1,20 @@
 package com.yangsheng.astrocal.ui.screens.home
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.yangsheng.astrocal.ui.i18n.Lang
 import com.yangsheng.astrocal.ui.i18n.UiStrings
 import com.yangsheng.astrocal.ui.screens.components.AppTopBar
 import com.yangsheng.astrocal.ui.screens.components.FeatureCard
 import com.yangsheng.astrocal.ui.screens.components.LangPickerDialog
+import com.yangsheng.astrocal.ui.theme.AstroBackground
+
 @Composable
 fun HomeScreen(
     ui: UiStrings,
@@ -22,6 +26,8 @@ fun HomeScreen(
     onGoTools: () -> Unit,
     onOpenWeather: () -> Unit,
     onOpenCelestial: () -> Unit,
+    onOpenAI: () -> Unit,
+    onOpenOAC: () -> Unit,
 ) {
     var showLang by remember { mutableStateOf(false) }
 
@@ -37,53 +43,63 @@ fun HomeScreen(
     )
 
     Scaffold(
+        containerColor = Color.Transparent, // IMPORTANT: avoid white "veil" over background
         topBar = {
             AppTopBar(
                 title = ui.homeTitle,
                 ui = ui,
                 onBack = onBack,
                 onLang = { showLang = true },
+                onAi = onOpenAI,
                 onClose = onClose
             )
         }
     ) { pad ->
-        Column(
-            modifier = Modifier
-                .padding(pad)
-                .padding(16.dp)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
-        ) {
-            FeatureCard(
-                title = ui.finderTitle,
-                subtitle = ui.finderDesc,
-                onClick = onGoFinder
-            )
+        AstroBackground {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(pad)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                FeatureCard(
+                    title = ui.finderTitle,
+                    subtitle = ui.finderDesc,
+                    onClick = onGoFinder
+                )
 
-            FeatureCard(
-                title = ui.homeCelestialTitle,
-                subtitle = ui.homeCelestialSubtitle,
-                onClick = onOpenCelestial
-            )
+                FeatureCard(
+                    title = ui.homeCelestialTitle,
+                    subtitle = ui.homeCelestialSubtitle,
+                    onClick = onOpenCelestial
+                )
 
-            FeatureCard(
-                title = ui.homeWeatherTitle,
-                subtitle = ui.homeWeatherSubtitle,
-                onClick = onOpenWeather
-            )
+                FeatureCard(
+                    title = ui.OACTitle,
+                    subtitle = ui.OACSubTitle,
+                    onClick = onOpenOAC
+                )
 
-            FeatureCard(
-                title = ui.ToolsTitle,
-                subtitle = ui.ToolsDesc,
-                onClick = onGoTools
-            )
+                FeatureCard(
+                    title = ui.homeWeatherTitle,
+                    subtitle = ui.homeWeatherSubtitle,
+                    onClick = onOpenWeather
+                )
 
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = ui.appSubtitle,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+                FeatureCard(
+                    title = ui.ToolsTitle,
+                    subtitle = ui.ToolsDesc,
+                    onClick = onGoTools
+                )
+
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = ui.appSubtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
